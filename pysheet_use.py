@@ -1,7 +1,7 @@
 
 import pygsheets
 import pandas as pd
-import load_dotenv
+from dotenv import load_dotenv
 #https://medium.com/game-of-data/play-with-google-spreadsheets-with-python-301dd4ee36eb
 load_dotenv('GDRIVE_API_CREDENTIALS')
 gc = pygsheets.authorize(service_account_env_var = 'GDRIVE_API_CREDENTIALS')
