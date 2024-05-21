@@ -5,12 +5,12 @@ import pandas as pd
 from dotenv import load_dotenv
 #https://medium.com/game-of-data/play-with-google-spreadsheets-with-python-301dd4ee36eb
 
-gc = pygsheets.authorize(service_file="D:\linebot\prime-victory-423614-n1-693ab773933f.json")
-sht = gc.open_by_url(
-'https://docs.google.com/spreadsheets/d/1f3bU44K7SQCFSV6TX48V4dNqQiyWIQA7-kWsIy9xmc0/edit#gid=0'
-)
+#gc = pygsheets.authorize(service_file="D:\linebot\prime-victory-423614-n1-693ab773933f.json")
+#sht = gc.open_by_url(
+#'https://docs.google.com/spreadsheets/d/1f3bU44K7SQCFSV6TX48V4dNqQiyWIQA7-kWsIy9xmc0/edit#gid=0'
+#)
 #wks_list = sht.worksheets()
-wks = sht[0]
+#wks = sht[0]
 
 #A1 = wks.cell('A1')
 #print(A1.value)
