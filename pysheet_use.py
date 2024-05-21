@@ -1,4 +1,3 @@
-
 import os
 import sys
 import pygsheets
@@ -110,11 +109,11 @@ def update_all_name_and_count_and_unit(wks,titles_list,new_data):
                 wks.update_values((index+2,1), [[row_data_dict_in_list[-1][titles_list[0]], row_data_dict[titles_list[1]], current_stroge, row_data_dict[titles_list[3]]]])
             break
     '''
-
+'''
 worksheet=login_sheet()
 titles=check_column_title(worksheet)
 print(titles)
-'''#names,units=get_names_and_units(worksheet,titles)
+#names,units=get_names_and_units(worksheet,titles)
 #print(names,units)
 
 import os
