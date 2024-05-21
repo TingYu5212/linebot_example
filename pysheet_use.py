@@ -1,10 +1,12 @@
 
+import os
+import sys
 import pygsheets
 import pandas as pd
 from dotenv import load_dotenv
 #https://medium.com/game-of-data/play-with-google-spreadsheets-with-python-301dd4ee36eb
-load_dotenv('GDRIVE_API_CREDENTIALS')
-gc = pygsheets.authorize(service_account_env_var = 'GDRIVE_API_CREDENTIALS')
+
+gc = pygsheets.authorize(service_file="D:\linebot\prime-victory-423614-n1-693ab773933f.json")
 sht = gc.open_by_url(
 'https://docs.google.com/spreadsheets/d/1f3bU44K7SQCFSV6TX48V4dNqQiyWIQA7-kWsIy9xmc0/edit#gid=0'
 )
@@ -26,8 +28,24 @@ wks = sht[0]
  
 # Update即時
 #wks.update_value((1,5), "test_A2")
+'''
 def login_sheet():
     gc = pygsheets.authorize(service_file="D:\linebot\prime-victory-423614-n1-693ab773933f.json")
+    sht = gc.open_by_url(
+    'https://docs.google.com/spreadsheets/d/1f3bU44K7SQCFSV6TX48V4dNqQiyWIQA7-kWsIy9xmc0/edit#gid=0'
+    )
+    wks = sht[0]
+    return wks
+'''
+def login_sheet():
+    
+    sheet_key = os.getenv("SHEET_KEY", None)
+    if sheet_key is None:
+        load_dotenv("D:\linebot\para.env")
+        sheet_key = os.getenv("SHEET_KEY", None)
+        if sheet_key is None:
+            sys.exit(1)
+    gc = pygsheets.authorize(service_account_env_var="SHEET_KEY")
     sht = gc.open_by_url(
     'https://docs.google.com/spreadsheets/d/1f3bU44K7SQCFSV6TX48V4dNqQiyWIQA7-kWsIy9xmc0/edit#gid=0'
     )
@@ -92,9 +110,14 @@ def update_all_name_and_count_and_unit(wks,titles_list,new_data):
                 wks.update_values((index+2,1), [[row_data_dict_in_list[-1][titles_list[0]], row_data_dict[titles_list[1]], current_stroge, row_data_dict[titles_list[3]]]])
             break
     '''
-'''
+
 worksheet=login_sheet()
 titles=check_column_title(worksheet)
 print(titles)
-#names,units=get_names_and_units(worksheet,titles)
-#print(names,units)'''
+'''#names,units=get_names_and_units(worksheet,titles)
+#print(names,units)
+
+import os
+load_dotenv('para.env')
+#print(os.environ)
+print(os.getenv('SHEET_KEY'))'''
